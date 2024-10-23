@@ -3,12 +3,13 @@ const config = {
     type: Phaser.AUTO,
     width: 800,
     height: 600,
-    parent: 'game-container',
+    parent: 'game-container',  // Update this to 'game-canvas'
+    canvas: document.getElementById('game-canvas'),  // Add this line
     physics: {
         default: 'arcade',
         arcade: {
             gravity: { y: 0 },
-            debug: false
+            debug: true
         }
     },
     scene: {
@@ -39,11 +40,26 @@ const recipes = [
 ];
 
 function preload() {
+    console.log('Preloading assets...');
+
+    // Loading tilemap and sprites
     this.load.image('tiles', 'assets/tilemap_packed.png');
     this.load.tilemapTiledJSON('map', 'assets/bar_map.json');
     this.load.spritesheet('characters', 'assets/characters_packed.png', { frameWidth: 16, frameHeight: 16 });
     this.load.spritesheet('objects', 'assets/objects_packed.png', { frameWidth: 16, frameHeight: 16 });
+
+    // Add log for each asset
+    this.load.on('filecomplete', function (key, type, data) {
+        console.log(`Asset loaded: key = ${key}, type = ${type}`);
+    });
+
+    this.load.on('loaderror', function (file) {
+        console.error(`Error loading file: ${file.key}`);
+    });
+
+    console.log('Finished preloading.');
 }
+
 
 function create() {
     const map = this.make.tilemap({ key: 'map' });

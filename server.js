@@ -4,12 +4,7 @@ const path = require('path');
 const app = express();
 const port = 3000;
 
-// Add this block
-process.on('uncaughtException', (error) => {
-  console.error('Uncaught Exception:', error);
-  process.exit(1);
-});
-
+// Serve static files from the "public" directory
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
@@ -19,3 +14,13 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
+
+
+
+// Add this block
+process.on('uncaughtException', (error) => {
+  console.error('Uncaught Exception:', error);
+  process.exit(1);
+});
+
+
