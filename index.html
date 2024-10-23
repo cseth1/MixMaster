@@ -1,0 +1,32 @@
+<!-- public/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MixMaster: The Bartender's Code Challenge</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="sidebar">
+            <h2>MixMaster</h2>
+            <div id="level-info">Level: <span id="current-level">1</span></div>
+            <div id="recipe-list">
+                <h3>Unlocked Recipes</h3>
+                <ul id="recipes"></ul>
+            </div>
+        </div>
+        <div id="main-area">
+            <div id="game-area">
+                <canvas id="game-canvas"></canvas>
+            </div>
+            <div id="code-area">
+                <textarea id="code-input" rows="10" cols="50"></textarea>
+                <button id="run-code">Mix Drink</button>
+            </div>
+        </div>
+    </div>
+    <script src="game.js"></script>
+</body>
+</html>
