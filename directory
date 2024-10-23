@@ -1,0 +1,6 @@
+project_folder/
+├── server.js
+└── public/
+    ├── index.html
+    ├── styles.css
+    └── game.js
